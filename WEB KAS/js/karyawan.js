@@ -13,13 +13,19 @@ function renderKaryawan() {
             <td>${index + 1}</td>
             <td><b>${item.nama}</b></td>
             <td>
-                <button class="btn-sm-warning" style="background:#f59e0b; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; margin-right:5px;" onclick="editKaryawan(${item.id})">
+                <!-- Tambahkan class "admin-only" pada tombol Edit & Hapus -->
+                <button class="btn-sm-warning admin-only" style="background:#f59e0b; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; margin-right:5px;" onclick="editKaryawan(${item.id})">
                     <i class="fa-solid fa-pen"></i> Edit
                 </button>
-                <button class="btn-sm-danger" onclick="hapusKaryawan(${item.id})">Hapus</button>
+                <button class="btn-sm-danger admin-only" onclick="hapusKaryawan(${item.id})">Hapus</button>
             </td>
         </tr>
     `).join('');
+
+    // Jalankan pengecekan hak akses setelah elemen tabel dibuat secara dinamis
+    if (typeof aturHakAkses === 'function') {
+        aturHakAkses();
+    }
 }
 
 // 2. Form Tambah Karyawan Baru

@@ -23,13 +23,19 @@ function renderKasMasuk() {
             <td>${item.keterangan}</td>
             <td style="color:#10b981; font-weight:bold;">${formatRupiah(item.jumlah)}</td>
             <td>
-                <button style="background:#f59e0b; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; margin-right:5px;" onclick="editTransaksi(${item.id})">
+                <!-- Tambahkan class "admin-only" pada tombol Edit & Hapus -->
+                <button class="admin-only" style="background:#f59e0b; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; margin-right:5px;" onclick="editTransaksi(${item.id})">
                     <i class="fa-solid fa-pen"></i> Edit
                 </button>
-                <button class="btn-sm-danger" onclick="hapusTransaksi(${item.id})">Hapus</button>
+                <button class="btn-sm-danger admin-only" onclick="hapusTransaksi(${item.id})">Hapus</button>
             </td>
         </tr>
     `).join('');
+
+    // Jalankan pengecekan hak akses setelah elemen tabel dibuat secara dinamis
+    if (typeof aturHakAkses === 'function') {
+        aturHakAkses();
+    }
 }
 
 // Populate Opsi Karyawan secara Dinamis dari Supabase
