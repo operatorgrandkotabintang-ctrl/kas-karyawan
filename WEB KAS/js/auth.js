@@ -3,18 +3,25 @@ function aturHakAkses(session) {
     if (!session || !session.user) return;
 
     const email = session.user.email;
-    
-    // Misal: Jika username/email mengandung kata "viewer" (contoh: viewer@kas.com atau tamu@kas.com)
-    const isViewer = email.includes('viewer') || email.includes('tamu');
+    const roleMetadata = session.user.user_metadata?.role;
+
+    // Cek apakah pengguna adalah Admin (berdasarkan email heru@kas.com ATAU metadata role 'admin')
+    const isAdmin = (email === 'heru@kas.com') || (roleMetadata === 'admin');
 
     const adminElements = document.querySelectorAll('.admin-only');
 
-    if (isViewer) {
-        // Sembunyikan semua tombol/form khusus admin
-        adminElements.forEach(el => el.style.display = 'none');
-    } else {
-        // Tampilkan kembali jika yang login adalah admin
+    if (isAdmin) {
+        // Tampilkan semua tombol/form khusus admin
         adminElements.forEach(el => el.style.display = '');
+    } else {
+        // Sembunyikan jika login sebagai Viewer (termasuk kas@kas.com)
+        adminElements.forEach(el => el.style.display = 'none');
+    }
+
+    // Update teks status role di header jika ada
+    const textRoleHeader = document.querySelector('.user-role-text');
+    if (textRoleHeader) {
+        textRoleHeader.textContent = isAdmin ? 'Administrator' : 'Viewer';
     }
 }
 
