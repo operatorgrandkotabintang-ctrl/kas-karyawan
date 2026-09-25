@@ -104,7 +104,6 @@
                         </div>
                     </div>
                     
-
                     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
                         <!-- 1. TOTAL KARYAWAN -->
                         <div class="card card-blue">
@@ -186,7 +185,7 @@
                 <!-- TAB 2: KAS MASUK -->
                 <section id="tab-kas-masuk" class="tab-content">
                     <h2>Manajemen Kas Masuk</h2>
-                    <form id="form-kas-masuk" class="form-box" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                    <form id="form-kas-masuk" class="form-box admin-only" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
                         <select id="masuk-karyawan" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; flex: 1; min-width: 180px;">
                             <option value="">-- Pilih Karyawan --</option>
                         </select>
@@ -220,7 +219,7 @@
                 <!-- TAB 3: KAS KELUAR -->
                 <section id="tab-kas-keluar" class="tab-content">
                     <h2>Manajemen Kas Keluar</h2>
-                    <form id="form-kas-keluar" class="form-box">
+                    <form id="form-kas-keluar" class="form-box admin-only">
                         <input type="text" id="keluar-keterangan" placeholder="Keterangan Kas Keluar (Misal: Beli ATK)" required>
                         <input type="number" id="keluar-jumlah" placeholder="Jumlah Nominal (Rp)" required>
                         <button type="submit" class="btn btn-danger"><i class="fa-solid fa-minus"></i> Tambah Kas Keluar</button>
@@ -234,7 +233,7 @@
                 <!-- TAB 4: DATA KARYAWAN -->
                 <section id="tab-karyawan" class="tab-content">
                     <h2>Data Karyawan</h2>
-                    <form id="form-karyawan" class="form-box">
+                    <form id="form-karyawan" class="form-box admin-only">
                         <input type="text" id="karyawan-nama" placeholder="Nama Lengkap Karyawan" required>
                         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Tambah Karyawan</button>
                     </form>
@@ -248,8 +247,7 @@
                 <section id="tab-laporan" class="tab-content">
                     <div class="laporan-container">
                         <div class="laporan-header-actions" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
-                            <div>
-                                <h2>Laporan Uang Kas Karyawan</h2>
+                            <div><h2>Laporan Uang Kas Karyawan</h2>
                                 <div class="laporan-legend">
                                     <span class="legend-item">
                                         <span class="status-badge paid" style="width:20px; height:20px; font-size:10px;"><i class="fa-solid fa-check"></i></span> Lunas
@@ -503,7 +501,7 @@
                 </div>
                 <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:10px;">
                     <button type="button" onclick="tutupModal('modal-edit-transaksi')" style="padding:8px 16px; background:#64748b; color:#fff; border:none; border-radius:6px; cursor:pointer;">Batal</button>
-                    <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-success" style="padding:8px 16px;"><i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan</button>
                 </div>
             </form>
         </div>
@@ -521,10 +519,11 @@
                 </div>
                 <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:10px;">
                     <button type="button" onclick="tutupModal('modal-edit-karyawan')" style="padding:8px 16px; background:#64748b; color:#fff; border:none; border-radius:6px; cursor:pointer;">Batal</button>
-                    <button type="button" onclick="simpanEditKaryawan()" class="btn btn-success" style="padding:8px 16px; background:#22c55e; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">Simpan Perubahan</button>
+                    <button type="button" onclick="simpanEditKaryawan()" class="btn btn-success" style="padding:8px 16px; background:#22c55e; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan</button>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>
